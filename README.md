@@ -12,7 +12,7 @@ SurfaceHolder.Callback-----clientDataSet.回调方法
 surface改变通知到SurfaceHolder.Callback，就像内存表数据发生改变会通知到clientDataSet.回调方法
 
 
-SurfaceView---Gride    
+SurfaceView---Gride  
 SurfaceView显示的内存surface的部分内容，正如gride只能看见clientDataSet.data.  
 通过SurfaceView可以获取到surfaceHoder,通过gride可以获得clientDataSet
 
