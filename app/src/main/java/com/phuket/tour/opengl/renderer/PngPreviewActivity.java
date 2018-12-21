@@ -20,16 +20,19 @@ public class PngPreviewActivity extends Activity {
 	private PngPreviewController pngPreviewController;
 	private Callback previewCallback = new Callback() {
 
+		@Override
 		public void surfaceCreated(SurfaceHolder holder) {
 			pngPreviewController = new PngPreviewController();
 			pngPreviewController.init(picPath);
 			pngPreviewController.setSurface(holder.getSurface());
 		}
 
+		@Override
 		public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
 			pngPreviewController.resetSize(width, height);
 		}
 
+		@Override
 		public void surfaceDestroyed(SurfaceHolder holder) {
 		}
 	};
@@ -51,35 +54,19 @@ public class PngPreviewActivity extends Activity {
 		surfaceView.getLayoutParams().height = getWindowManager().getDefaultDisplay().getWidth();
 	}
 
-	/**
-	 * On stop.
-	 */
+
+	@Override
 	protected void onStop() {
+		stopPlay(); // Free the native renderer
 		super.onStop();
-		// Free the native renderer
-		stopPlay();
 	}
 
-	protected void stopPlay() {
+	private void stopPlay() {
 		Log.i("problem", "playerController.stop()...");
 		if (null != pngPreviewController) {
 			pngPreviewController.stop();
 			pngPreviewController = null;
 		}
 	}
-
-	private Handler handler = new Handler() {
-
-		@Override
-		public void handleMessage(Message msg) {
-			switch (msg.what) {
-			case 0:
-				break;
-			default:
-				break;
-			}
-		}
-
-	};
 
 }
