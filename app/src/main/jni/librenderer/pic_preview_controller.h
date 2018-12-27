@@ -35,7 +35,7 @@ private:
 	};
 
 	pthread_t _threadId;
-	pthread_mutex_t mLock;
+	pthread_mutex_t mLock; //posix下抽象了一个锁类型的结构
 	pthread_cond_t mCondition;
 	enum RenderThreadMessage _msg;
 

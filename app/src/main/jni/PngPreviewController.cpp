@@ -13,7 +13,7 @@ JNIEXPORT void JNICALL Java_com_phuket_tour_opengl_renderer_PngPreviewController
 (JNIEnv * env, jobject obj, jstring pngFilePathParam) {
 	controller = new PicPreviewController();
 	char* pngFilePath = (char*) env->GetStringUTFChars(pngFilePathParam, NULL);
-	controller->start(pngFilePath);
+	controller->start(pngFilePath); //开启渲染线程，窗口如果还没有设置，会等待窗口设置后进行渲染
 	env->ReleaseStringUTFChars(pngFilePathParam, pngFilePath);
 }
 
